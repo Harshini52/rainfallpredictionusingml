@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rainfall Prediction</title>
+    <style>
+        body { font-family: Arial; background-color: #e6f2ff; text-align: center; padding: 40px; }
+        input[type="number"] { padding: 10px; width: 250px; margin: 10px; }
+        button { padding: 10px 20px; background-color: #007bff; color: white; border: none; }
+        .result { margin-top: 30px; font-size: 20px; color: #333; }
+    </style>
+</head>
+<body>
+    <h2>🌧 Rainfall Prediction Model</h2>
+
+    <form action="/predict" method="POST">
+        <input type="number" name="pressure" step="any" placeholder="Pressure (hPa)" required><br>
+        <input type="number" name="dewpoint" step="any" placeholder="Dew Point (°C)" required><br>
+        <input type="number" name="humidity" step="any" placeholder="Humidity (%)" required><br>
+        <input type="number" name="cloud" step="any" placeholder="Cloud Cover (%)" required><br>
+        <input type="number" name="sunshine" step="any" placeholder="Sunshine (hours)" required><br>
+        <input type="number" name="winddirection" step="any" placeholder="Wind Direction (°)" required><br>
+        <input type="number" name="windspeed" step="any" placeholder="Wind Speed (km/h)" required><br>
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction is not none %}
+        <div class="result">
+            <p><strong>Predicted Rainfall:</strong> {{ prediction }} mm</p>
+        </div>
+    {% endif %}
+</body>
+</html>
